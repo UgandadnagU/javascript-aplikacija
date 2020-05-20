@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+    <!-- Your external script -->
+    <script type="text/javascript" src="Script2.js"></script>
+</head>
+<body>
+    <!-- Your html code -->
+    <form>
+        <label for="fname">gads:</label><br>
+        <input type="text" id="gads" name="fname"><br>
+        <label for="lname">menesis:</label><br>
+        <input type="text" id="menesis" name="lname"><br>
+        <label for="nname">diena:</label><br>
+        <input type="text" id="diena" name="nname"><br>
+        <input type="button" value="Pateikt" onClick="functionDienas(menesis, diena, dienas);">
+
+    </form>
+    <p> Līdz svētkiem atlikušas <input type="text" id="dienas"> dienas</p>
+    <script> 
+        function functionDienas(menesis, diena, dienas) {
+            var inputmenesis = document.getElementById(menesis);
+            var inputdiena = document.getElementById(diena);
+
+
+            var dienas = inputdiena;
+            document.write(dienas);
+            var menesis = inputmenesis;
+            document.write(menesis);
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var dienudif = dienas - dd;
+            var monthdif = menesis - mm;
+            var monthday = monthdif * 30.44;
+            var dienaslidz = (monthday + dienudif);
+            if (dienaslidz < 0) {
+                var dienuskaits = Math.round(dienaslidz * -1 + 365.25)
+                document.write(dienuskaits);
+                //document.getElementById("dienas").innerHTML = dienuskaits;
+            } else {
+                var dienuskaits = Math.round(dienaslidz)
+                document.write("Līdz svētkiem atlikušas"dienuskaits"dienas");
+                //document.getElementById("dienas").innerHTML = dienuskaits;
+            }
+        }
+    </script>
+</body>
+</html>
